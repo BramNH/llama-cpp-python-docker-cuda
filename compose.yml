@@ -1,0 +1,19 @@
+services:
+  llama-cpp-python:
+    container_name: llama-cpp-python
+    image: llama-cpp-python
+    tty: true # enable colorized logs
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    volumes:
+      - ./models/:/var/model
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
