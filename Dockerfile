@@ -21,10 +21,7 @@ ENV LLAMA_CUBLAS=1
 RUN python3 -m pip install --upgrade pip pytest cmake scikit-build setuptools fastapi uvicorn sse-starlette pydantic-settings starlette-context transformers sentencepiece protobuf
 
 # Install llama-cpp-python (build with cuda)
-RUN CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python
-
-# Changes to the llama-cpp-python pip package to fix Validation error: https://github.com/abetlen/llama-cpp-python/issues/1314
-COPY llama_types.py /usr/local/lib/python3.10/dist-packages/llama_cpp/
+RUN CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python==0.2.64
 
 # Run the server
 CMD python3 -m llama_cpp.server
