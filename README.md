@@ -19,6 +19,7 @@ docker compose up -d
 ```
 
 ## Quick setup
+Only do this if you meet the requirements below. Otherwise build your own image as described above.
 ### Prerequisites:
 * You are running `Ubuntu 22.04`
 * Maximum supported CUDA version 12.1 (check with command `$ nvidia-smi`).
